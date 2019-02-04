@@ -64,10 +64,13 @@ export default {
       let replaceInput = this.matches[this.selected]
       this.$emit('itemSelected', replaceInput)
       //focus back to input
-      this.$refs.input.focus()
+      this.inputFocus()
     },
     esc(){
       this.popUp=false
+    },
+    inputFocus(){
+     this.$refs.input.focus()
     }
   },
 }

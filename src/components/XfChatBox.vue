@@ -30,7 +30,7 @@ export default {
         },
       ],
       chatInput: '',
-      users: users
+      users: users,
     }
   },
   computed:{

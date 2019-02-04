@@ -10,7 +10,7 @@
       <p>{{reply.text}}</p>
     </div>
     <button class="reply-btn" v-show="!replybtn" @click="hdlbtn">Reply</button>
-    <xf-chat-input :chatInput.sync="replyInput" :users="users" v-show="replybtn" @btnClick="hdlReply" @itemSelected="hdlSelected" />
+    <xf-chat-input ref="customInput" :chatInput.sync="replyInput" :users="users" v-show="replybtn" @btnClick="hdlReply" @itemSelected="hdlSelected" />
   </div>
 </template>
 
@@ -31,6 +31,10 @@ export default {
   methods: {
     hdlbtn() {
       this.replybtn = !this.replybtn
+      //focus to child Input
+      this.$nextTick(() => {
+       this.$refs.customInput.inputFocus();
+      })
     },
     hdlReply(e) {
       this.replybtn = !this.replybtn

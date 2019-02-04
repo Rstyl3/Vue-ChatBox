@@ -33,7 +33,6 @@ export default {
   watch: {
     chatInput() {
       if(this.chatInput.endsWith('@')){this.popUp = true}
-      
       else if(!this.chatInput.match('@')){this.popUp = false}
       if(this.chatInput.match('@ ')){this.popUp = false}
     },
@@ -44,6 +43,7 @@ export default {
         return []
       }        
       if (this.popUp) {
+        //number of @ in input
         let splitCount= [...this.chatInput].filter(l => l === '@').length 
         console.log(splitCount)
         //Filter list after @ values

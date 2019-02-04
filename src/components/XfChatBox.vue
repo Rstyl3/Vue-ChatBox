@@ -25,6 +25,7 @@ export default {
           text: 'Hi There!',
           author: 'Bob',
           date: '1/1 10:00',
+          replyThread:[],
           reply: false,
         },
       ],
@@ -45,6 +46,7 @@ export default {
           text: this.chatInput,
           author: 'you',
           date: formatDate,
+          replyThread:[],
           reply: false
         })
         this.chatInput = ''

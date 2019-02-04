@@ -1,0 +1,203 @@
+[
+    {
+        "$id": "1",
+        "DocHeader": 123,
+        "ThreadId": 5637144576,
+        "User": "Admin",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "Hello",
+        "ToUser": [],
+        "Thread": []
+    },
+    {
+        "$id": "2",
+        "DocHeader": 123,
+        "ThreadId": 5637146076,
+        "User": "ali.chehab",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "World",
+        "ToUser": [],
+        "Thread": [
+            {
+                "$id": "3",
+                "DocHeader": 123,
+                "ThreadId": 5637146076,
+                "User": "APRIL",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "Longer hello world string...123456789",
+                "ToUser": [],
+                "Thread": null
+            },
+            {
+                "$id": "4",
+                "DocHeader": 123,
+                "ThreadId": 5637146076,
+                "User": "Admin",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "Hello",
+                "ToUser": [],
+                "Thread": null
+            },
+            {
+                "$id": "5",
+                "DocHeader": 123,
+                "ThreadId": 5637146076,
+                "User": "Admin",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "World",
+                "ToUser": [],
+                "Thread": null
+            },
+            {
+                "$id": "6",
+                "DocHeader": 123,
+                "ThreadId": 5637146076,
+                "User": "Admin",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "Hello World",
+                "ToUser": [],
+                "Thread": null
+            }
+        ]
+    },
+    {
+        "$id": "7",
+        "DocHeader": 123,
+        "ThreadId": 5637146827,
+        "User": "Admin",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "We also have some @mentions that doest work right now :(",
+        "ToUser": [],
+        "Thread": []
+    },
+    {
+        "$id": "8",
+        "DocHeader": 123,
+        "ThreadId": 5637146828,
+        "User": "Admin",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "We also need some kind of input dialog...hold on...fixing it right now....",
+        "ToUser": [],
+        "Thread": [
+            {
+                "$id": "9",
+                "DocHeader": 123,
+                "ThreadId": 5637146828,
+                "User": "Admin",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "does this clear the input",
+                "ToUser": [],
+                "Thread": null
+            },
+            {
+                "$id": "10",
+                "DocHeader": 123,
+                "ThreadId": 5637146828,
+                "User": "Admin",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "nope it does not",
+                "ToUser": [],
+                "Thread": null
+            },
+            {
+                "$id": "11",
+                "DocHeader": 123,
+                "ThreadId": 5637146828,
+                "User": "Admin",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "clear",
+                "ToUser": [],
+                "Thread": null
+            },
+            {
+                "$id": "12",
+                "DocHeader": 123,
+                "ThreadId": 5637146828,
+                "User": "Admin",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "works",
+                "ToUser": [],
+                "Thread": null
+            }
+        ]
+    },
+    {
+        "$id": "13",
+        "DocHeader": 123,
+        "ThreadId": 5637146829,
+        "User": "Admin",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "What happens if we make this a fixed size",
+        "ToUser": [],
+        "Thread": []
+    },
+    {
+        "$id": "14",
+        "DocHeader": 123,
+        "ThreadId": 5637147576,
+        "User": "Admin",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "More tests",
+        "ToUser": [],
+        "Thread": []
+    },
+    {
+        "$id": "15",
+        "DocHeader": 123,
+        "ThreadId": 5637150576,
+        "User": "Admin",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "Test from an external source",
+        "ToUser": [],
+        "Thread": [
+            {
+                "$id": "16",
+                "DocHeader": 123,
+                "ThreadId": 5637150576,
+                "User": "Admin",
+                "Read": 0,
+                "UserNotified": 0,
+                "Message": "Answer from internal",
+                "ToUser": [],
+                "Thread": null
+            }
+        ]
+    },
+    {
+        "$id": "17",
+        "DocHeader": 123,
+        "ThreadId": 5637151326,
+        "User": "Admin",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "testar",
+        "ToUser": [],
+        "Thread": []
+    },
+    {
+        "$id": "18",
+        "DocHeader": 123,
+        "ThreadId": 5637151327,
+        "User": "Admin",
+        "Read": 0,
+        "UserNotified": 0,
+        "Message": "nytt",
+        "ToUser": [],
+        "Thread": []
+    }
+]

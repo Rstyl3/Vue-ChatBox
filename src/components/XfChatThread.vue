@@ -5,7 +5,7 @@
       <p>{{chatThread.text}}</p>
     </div>
 
-    <div class="reply-box" v-for="reply in replyChat" :key="reply.id">
+    <div class="reply-box" v-for="reply in chatThread.replyThread" :key="reply.id">
       <h3>{{reply.author}} <span>{{reply.date}}</span></h3>
       <p>{{reply.text}}</p>
     </div>
@@ -24,7 +24,6 @@ export default {
   props: ['chatThread', 'users'],
   data() {
     return {
-      replyChat: [],
       replybtn: false,
       replyInput: '',
     }
@@ -41,7 +40,7 @@ export default {
       if (this.replyInput === '') {
         console.log('write a message', this.replyInput)
       } else {
-        this.replyChat.push({
+        this.chatThread.replyThread.push({
           text: this.replyInput,
           author: 'you',
           date: formatDate,

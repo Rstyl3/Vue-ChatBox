@@ -1,15 +1,28 @@
 <template>
   <div id="app">
-    <xf-chat-box />
+    <xf-chat-box :chatThread="chatThread" :users="users" />
   </div>
 </template>
 
 <script>
-
+import users from '@/assets/users.js'
 
 export default {
   name: 'app',
-
+  data(){
+    return{
+      chatThread: [
+        {
+          text: 'Hi There!',
+          author: 'Bob',
+          date: '1/1 10:00',
+          replyThread:[],
+          reply: false,
+        },
+      ],
+       users: users,
+    }
+  }
 }
 </script>
 

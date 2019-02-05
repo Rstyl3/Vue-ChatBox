@@ -10,7 +10,7 @@
 <script>
 import XfChatInput from './XfChatInput.vue'
 import XfChatThread from './XfChatThread.vue'
-import users from '@/assets/users.js'
+
 
 export default {
   name: 'xf-chat-box',
@@ -18,19 +18,10 @@ export default {
     XfChatInput,
     XfChatThread,
   },
+  props:['chatThread','users'],
   data() {
     return {
-      chatThread: [
-        {
-          text: 'Hi There!',
-          author: 'Bob',
-          date: '1/1 10:00',
-          replyThread:[],
-          reply: false,
-        },
-      ],
       chatInput: '',
-      users: users,
     }
   },
   computed:{

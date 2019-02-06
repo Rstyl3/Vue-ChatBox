@@ -1,20 +1,23 @@
 <template>
   <div class="x-input">
     <input
-      type="text"
+      type="search"
       ref="input"
       :value="chatInput"
       @input="$emit('update:chatInput', $event.target.value)"
       @keyup.enter="$emit('btnClick')"
+      @keydown.up="up"
+      @keydown.down="down"
       @keydown.esc="esc"
       placeholder="Type @ to mention someone"
     >
     <button @click="$emit('btnClick')">Send</button>
-    <ul class="pop-up" v-show="popUp || matches==[]">
+    <ul class="pop-up" v-show="popUp || matches==[]" ref="optionsList" :style="{left: popUpPosition+'%'}" >
       <li
         v-for="(user,index) in matches"
         :key="user['name']"
         @click="itemClicked(index)"
+        :class="{'selected': (selected == index)}"
       >{{user.name}}</li>
     </ul>
   </div>
@@ -28,11 +31,18 @@ export default {
       popUp: false,
       selected: 0,
       selectedItems: null,
+      itemHeight: 22.9,
+      popUpPosition: 0
     }
   },
   watch: {
     chatInput() {
-      if(this.chatInput.endsWith('@')){this.popUp = true}
+
+      if(this.chatInput.endsWith(' @')){
+              console.log(this.chatInput.length)
+              this.popUpPosition = this.chatInput.length * 1.65
+        this.popUp = true
+        }
       else if(!this.chatInput.match('@')){this.popUp = false}
       if(this.chatInput.match('@ ')){this.popUp = false}
     },
@@ -45,7 +55,7 @@ export default {
       if (this.popUp) {
         //number of @ in input
         let splitCount= [...this.chatInput].filter(l => l === '@').length 
-        console.log(splitCount)
+        console.log("number of mentions",splitCount)
         //Filter list after @ values
         if(  splitCount >= 1){
           return this.users.filter(item => item['name'].toLowerCase().includes(this.chatInput.split('@')[splitCount].toLowerCase()))
@@ -69,9 +79,26 @@ export default {
     esc(){
       this.popUp=false
     },
+    up() {
+      if (this.selected == 0) {
+        return
+      }
+      this.selected -= 1
+      this.scrollToItem();
+    },
+    down() {
+      if (this.selected >= this.matches.length - 1) {
+        return
+      }
+      this.selected += 1
+      this.scrollToItem();
+    },
     inputFocus(){
      this.$refs.input.focus()
-    }
+    },
+    scrollToItem() {
+      this.$refs.optionsList.scrollTop = this.selected * this.itemHeight
+    },
   },
 }
 </script>
@@ -107,7 +134,8 @@ export default {
   padding: 0;
   left: 0;
   right: 0;
-  width: 74%;
+  width: 100%;
+  max-width: 380px;
   bottom: 18px;
   margin: 0 auto;
   background-color: #fff;
@@ -122,7 +150,6 @@ export default {
 }
 .pop-up li:hover {
   background: #ebebeb;
-  font-weight: 600;
   cursor: pointer;
 }
 .pop-up::-webkit-scrollbar{
@@ -134,5 +161,8 @@ export default {
 }
 .pop-up::-webkit-scrollbar-thumb{
   background-color: #5d6e7b;
+}
+.pop-up li.selected {
+  background: #ebebeb;
 }
 </style>

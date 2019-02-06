@@ -1,13 +1,13 @@
 <template>
   <div class="thread">
     <div class="message-box">
-      <h3> {{chatThread.author}} <span>{{chatThread.date}}</span> </h3>
-      <p>{{chatThread.text}}</p>
+      <div class="chat-header"> {{chatThread.author}} <span>{{chatThread.date}}</span> </div>
+      <p v-html="chatThread.text"></p>
     </div>
 
     <div class="reply-box" v-for="reply in chatThread.replyThread" :key="reply.id">
-      <h3>{{reply.author}} <span>{{reply.date}}</span></h3>
-      <p>{{reply.text}}</p>
+      <div class="chat-header">{{reply.author}} <span>{{reply.date}}</span></div>
+      <p v-html="reply.text"></p>
     </div>
     <button class="reply-btn" v-show="!replybtn" @click="hdlbtn">Reply</button>
     <xf-chat-input ref="customInput" :chatInput.sync="replyInput" :users="users" v-show="replybtn" @btnClick="hdlReply" @itemSelected="hdlSelected" />
@@ -40,10 +40,16 @@ export default {
       this.replybtn = !this.replybtn
       let date = new Date()
       let formatDate = date.getMonth() + 1 + '/' + date.getDay() + ' ' + date.getHours() + ':' + date.getMinutes()
-      console.log('this is reply date', formatDate)
       if (this.replyInput === '') {
         console.log('write a message', this.replyInput)
       } else {
+        let mention = /\s(@[\w_-]+)/g
+        if(this.replyInput.match(mention)){
+          console.log(this.replyInput.match(mention))
+          let matched = this.replyInput.match(mention)
+          let i = -1
+          this.replyInput = this.replyInput.replace(mention, function(){return '<b>'+ matched[++i] +'</b>'})
+        }
         this.chatThread.replyThread.push({
           text: this.replyInput,
           author: 'you',
@@ -58,7 +64,7 @@ export default {
       console.log(JSON.parse(JSON.stringify(v)))
       //remove string after @ to replace with selected value
       let data = this.replyInput.slice(0,this.replyInput.lastIndexOf('@'))
-      let newInput =data+'@' + JSON.parse(JSON.stringify(v)).name
+      let newInput =data+ '@' + JSON.parse(JSON.stringify(v)).name
       this.replyInput = newInput
     },
   },
@@ -72,21 +78,26 @@ export default {
 }
 .message-box {
   text-align: left;
-  padding-left: 10px;
 }
 .reply-box {
   text-align: left;
   background-color: #f6f6f6;
 }
+.chat-header{
+ font-size: 1.17em;
+ font-weight: bold;
+}
 .message-box span,
 .reply-box span {
-  font-weight: normal;
-  font-size: 15px;
+ font-weight: normal;
+ font-size: 1em;
 }
-.reply-box p,
-.reply-box h3 {
-  margin: 0;
-  padding: 5px 5px 5px 20px;
+.reply-box p,.message-box p {
+ margin: 0;
+ padding: 5px 0;
+}
+.reply-box p >b{
+font-weight: bold;
 }
 .reply-btn {
 }

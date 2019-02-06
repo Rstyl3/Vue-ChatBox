@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <xf-chat-box :chatThread="chatThread" :users="users" />
+    <xf-chat-box :Threads="chatThreads" :users="users" />
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   name: 'app',
   data(){
     return{
-      chatThread: [
+      chatThreads: [
         {
           text: 'Hi There!',
           author: 'Bob',

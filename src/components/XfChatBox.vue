@@ -1,9 +1,9 @@
 <template>
   <div class="chat-box">
     <div class="text-area" >
-      <xf-chat-thread :chatThread="chat" :users="users" v-for="chat in chatThread" :key="chat.id" />
+      <xf-chat-thread :chatThread="thread" :users="users" v-for="thread in Threads" :key="thread.id" />
     </div>
-    <xf-chat-input :chatInput.sync="chatInput" :users="users" @btnClick="hdlReply" @itemSelected="hdlSelected"/>
+    <xf-chat-input :chatInput.sync="chatInput" :users="users" @btnClick="hdlSend" @itemSelected="hdlSelected"/>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     XfChatInput,
     XfChatThread,
   },
-  props:['chatThread','users'],
+  props:['Threads','users'],
   data() {
     return {
       chatInput: '',
@@ -27,13 +27,21 @@ export default {
   computed:{
   },
   methods: {
-    hdlReply(){
+    hdlSend(){
       let date = new Date();
       let formatDate = (date.getMonth()+ 1) + '/' + date.getDay() + ' ' +  date.getHours() + ":" + date.getMinutes() 
       if (this.chatInput === '') {
         console.log('write a message', this.chatInput)
-      } else {
-        this.chatThread.push({
+      } 
+      else {
+        let mention = /\s(@[\w_-]+)/g
+        if(this.chatInput.match(mention)){
+          console.log(this.chatInput.match(mention))
+          let matched = this.chatInput.match(mention)
+          let i = -1
+          this.chatInput = this.chatInput.replace(mention, function(){return '<b>'+ matched[++i] +'</b>'})
+        }
+        this.Threads.push({
           text: this.chatInput,
           author: 'you',
           date: formatDate,
@@ -62,12 +70,10 @@ export default {
   height: 500px;
 }
 .text-area {
-  border: 1px solid black;
   height: 100%;
   max-height: 400px;
   padding: 10px;
   overflow: auto;
-  background-color: #ebebeb;
 }
 .text-area::-webkit-scrollbar{
   width: 6px;

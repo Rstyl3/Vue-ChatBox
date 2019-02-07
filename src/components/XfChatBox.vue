@@ -65,7 +65,7 @@ export default {
 
 <style scoped>
 .chat-box {
-  width: 400px;
+  width: 100%;
   margin: 0 auto;
   height: 100%;
 }

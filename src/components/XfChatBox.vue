@@ -67,12 +67,12 @@ export default {
 .chat-box {
   width: 400px;
   margin: 0 auto;
-  height: 500px;
+  height: 100%;
 }
 .text-area {
   height: 100%;
-  max-height: 400px;
-  padding: 10px;
+  /* max-height: 400px; */
+  padding: 26px 2px 5px 2px;
   overflow: auto;
 }
 .text-area::-webkit-scrollbar{

@@ -12,7 +12,7 @@
       placeholder="Type @ to mention someone"
     >
     <button @click="$emit('btnClick')">Send</button>
-    <ul class="pop-up" v-show="popUp || matches==[]" ref="optionsList" :style="{left: popUpPosition+'%'}" >
+    <ul class="pop-up" v-show="popUp || matches==[]" ref="optionsList" >
       <li
         v-for="(user,index) in matches"
         :key="user['name']"
@@ -108,7 +108,7 @@ export default {
   position: relative;
   border: 1px solid darkgrey;
   display: inline-block;
-  max-width: 500px;
+  /* max-width: 500px; */
   width: 100%;
 }
 .x-input input {
@@ -134,9 +134,8 @@ export default {
   padding: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  max-width: 380px;
-  bottom: 18px;
+  width: 98%;
+  bottom: 22px;
   margin: 0 auto;
   background-color: #fff;
   overflow-x: hidden;

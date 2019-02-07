@@ -74,14 +74,14 @@ export default {
 <style scope>
 .thread {
   margin-bottom: 5px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.43);
 }
-.message-box {
+.message-box,.reply-box {
   text-align: left;
+  padding: 5px;
 }
 .reply-box {
-  text-align: left;
-  background-color: #f6f6f6;
+  background-color: rgba(0, 0, 0, 0.09);
 }
 .chat-header{
  font-size: 1.17em;

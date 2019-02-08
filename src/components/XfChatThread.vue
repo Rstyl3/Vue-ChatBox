@@ -43,12 +43,14 @@ export default {
       if (this.replyInput === '') {
         console.log('write a message', this.replyInput)
       } else {
-        let mention = /\s(@[\w_-]+)/g
-        if(this.replyInput.match(mention)){
-          console.log(this.replyInput.match(mention))
-          let matched = this.replyInput.match(mention)
-          let i = -1
-          this.replyInput = this.replyInput.replace(mention, function(){return '<b>'+ matched[++i] +'</b>'})
+        let userlist = new RegExp(this.users.map( n => '@'+n.name).join('|'),'g')
+        if(this.replyInput.match(userlist)){
+        let matched = this.replyInput.match(userlist)
+        let i = -1
+        this.replyInput = this.replyInput.replace(userlist, function(){return '<b>'+ matched[++i] +'</b>'})
+        //find selected mentions as object
+        let selected = matched.map(n => this.users.find(u => u.name == n.substring(1)))
+        console.log('selected mentions are: ', JSON.parse(JSON.stringify(selected)))
         }
         this.chatThread.replyThread.push({
           text: this.replyInput,

@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       chatInput: '',
+      selectedMentions:[]
     }
   },
   computed:{
@@ -34,12 +35,16 @@ export default {
         console.log('write a message', this.chatInput)
       } 
       else {
-        let mention = /\s(@[\w_-]+)/g
-        if(this.chatInput.match(mention)){
-          console.log(this.chatInput.match(mention))
-          let matched = this.chatInput.match(mention)
-          let i = -1
-          this.chatInput = this.chatInput.replace(mention, function(){return '<b>'+ matched[++i] +'</b>'})
+        // let mention = /\s(@[\w_-]+)/g
+        // let newMatch = userlist.filter(e => matched.indexOf(e) !== -1)
+        let userlist = new RegExp(this.users.map( n => '@'+n.name).join('|'),'g')         //regex list of users with @ added
+        if(this.chatInput.match(userlist)){
+        let matched = this.chatInput.match(userlist)
+        let i = -1
+        this.chatInput = this.chatInput.replace(userlist, function(){return '<b>'+ matched[++i] +'</b>'})
+        //find selected mentions as object
+        let selected = matched.map(n => this.users.find(u => u.name == n.substring(1)))
+        console.log('selected mentions are: ', JSON.parse(JSON.stringify(selected)))
         }
         this.Threads.push({
           text: this.chatInput,
@@ -49,11 +54,13 @@ export default {
           reply: false
         })
         this.chatInput = ''
+        this.selectedMentions=[]
       }  
     },
     hdlSelected(v) {
       //reparse object since its on Observer
       console.log(JSON.parse(JSON.stringify(v)))
+      this.selectedMentions.push(v.name)
       //remove string after @ to replace with selected value
       let data = this.chatInput.slice(0,this.chatInput.lastIndexOf('@'))
       let newInput =data+'@' + JSON.parse(JSON.stringify(v)).name

@@ -32,15 +32,12 @@ export default {
       selected: 0,
       selectedItems: null,
       itemHeight: 22.9,
-      popUpPosition: 0
     }
   },
   watch: {
     chatInput() {
 
       if(this.chatInput.endsWith(' @')){
-              console.log(this.chatInput.length)
-              this.popUpPosition = this.chatInput.length * 1.65
         this.popUp = true
         }
       else if(!this.chatInput.match('@')){this.popUp = false}
@@ -54,8 +51,7 @@ export default {
       }        
       if (this.popUp) {
         //number of @ in input
-        let splitCount= [...this.chatInput].filter(l => l === '@').length 
-        console.log("number of mentions",splitCount)
+        let splitCount= [...this.chatInput].filter(l => l === '@').length
         //Filter list after @ values
         if(  splitCount >= 1){
           return this.users.filter(item => item['name'].toLowerCase().includes(this.chatInput.split('@')[splitCount].toLowerCase()))

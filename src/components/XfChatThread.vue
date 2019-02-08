@@ -63,7 +63,6 @@ export default {
       }
     },
     hdlSelected(v) {
-      console.log(JSON.parse(JSON.stringify(v)))
       //remove string after @ to replace with selected value
       let data = this.replyInput.slice(0,this.replyInput.lastIndexOf('@'))
       let newInput =data+ '@' + JSON.parse(JSON.stringify(v)).name

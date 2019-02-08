@@ -59,7 +59,7 @@ export default {
     },
     hdlSelected(v) {
       //reparse object since its on Observer
-      console.log(JSON.parse(JSON.stringify(v)))
+      // console.log(JSON.parse(JSON.stringify(v)))
       this.selectedMentions.push(v.name)
       //remove string after @ to replace with selected value
       let data = this.chatInput.slice(0,this.chatInput.lastIndexOf('@'))

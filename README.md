@@ -11,6 +11,9 @@ npm run serve
 ```
 
 ### Compiles and minifies for production
+
+https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration
+https://stackoverflow.com/posts/42606838/revisions
 ```
 npm run build
 ```

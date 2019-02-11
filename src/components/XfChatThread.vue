@@ -36,7 +36,7 @@ export default {
        this.$refs.customInput.inputFocus();
       })
     },
-    hdlReply(e) {
+    hdlReply() {
       this.replybtn = !this.replybtn
       let date = new Date()
       let formatDate = date.getMonth() + 1 + '/' + date.getDay() + ' ' + date.getHours() + ':' + date.getMinutes()

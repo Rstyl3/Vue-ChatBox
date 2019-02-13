@@ -1,0 +1,54 @@
+<meta charset="utf-8">
+<title>XfChatBox demo</title>
+<!-- <script src="https://unpkg.com/vue"></script> -->
+<script src="./XfChatBox.umd.js"></script>
+
+<link rel="stylesheet" href="./XfChatBox.css">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.min.js"></script>
+
+<div id="app">
+    <xf-chat-box :threads="chatThreads" :users="users"></xf-chat-box>
+</div>
+   
+<script>
+//script tage type : type="module"
+// import Vue from 'https://unpkg.com/vue@2.6.0/dist/vue.esm.browser.min.js';
+    console.log('testing' )
+      let users=[
+          {id: 1, name: 'Severin Hasselhof'},
+          {id: 2, name: 'Johan Hamburger'},
+          {id: 3, name: 'Thomas Brokeback'},
+          {id: 4, name: 'Erik Ender'},
+          {id: 5, name: 'Jeremiah Unsullied'},
+          {id: 6, name: 'Priscila Kearney'},
+          {id: 7, name: 'Alonso Winsett'},
+          {id: 8, name: 'Diedre Wills'},
+          {id: 9, name: 'Collin Pecoraro'},
+          {id: 10, name: 'Kip Nicks'},
+          {id: 11, name: 'Margorie Saffer'},
+          {id: 12, name: 'Cary Eisenstein'},
+          {id: 13, name: 'Peg Espinal'},
+  ]
+
+// import chat from 'https://unpkg.com/xfchatbox@0.1.1/src/components/xfchat.vue'
+// console.log(chat)
+Vue.component('xf-chat-box', XfChatBox);
+  // console.log('testing', XfChatBox)
+new Vue({
+    data(){
+      return{
+        chatThreads: [
+          {
+            text: 'Hi There!',
+            author: 'Bob',
+            date: '1/1 10:00',
+            replyThread:[],
+            reply: false,
+          },
+        ],
+         users: users,
+      }
+    }
+  }).$mount('#app')
+
+  </script>

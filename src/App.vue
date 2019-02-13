@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <xf-chat-box :Threads="chatThreads" :users="users" />
+    <xf-chat-box :threads="chatThreads" :users="users" />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="chat-box">
     <div class="text-area" >
-      <xf-chat-thread :chatThread="thread" :users="users" v-for="thread in Threads" :key="thread.id" />
+      <xf-chat-thread :chatThread="thread" :users="users" v-for="thread in threads" :key="thread.id" />
     </div>
     <xf-chat-input :chatInput.sync="chatInput" :users="users" @btnClick="hdlSend" @itemSelected="hdlSelected"/>
   </div>
@@ -18,7 +18,7 @@ export default {
     XfChatInput,
     XfChatThread,
   },
-  props:['Threads','users'],
+  props:['threads','users'],
   data() {
     return {
       chatInput: '',
@@ -45,7 +45,7 @@ export default {
         let selected = matched.map(n => this.users.find(u => u.name == n.substring(1)))
         console.log('selected mentions are: ', JSON.parse(JSON.stringify(selected)))
         }
-        this.Threads.push({
+        this.threads.push({
           text: this.chatInput,
           author: 'you',
           date: formatDate,
